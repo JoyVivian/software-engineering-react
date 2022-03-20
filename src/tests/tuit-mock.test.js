@@ -4,6 +4,7 @@ import {HashRouter} from "react-router-dom";
 import {findAllTuits} from "../services/tuits-service";
 import axios from "axios";
 
+//jest.mock('axios');
 
 const MOCKED_TUITS = [
     {
@@ -23,17 +24,19 @@ const MOCKED_TUITS = [
 
 test('tuit list renders mocked', async () => {
     // TODO: implement this
-    const mock = jest.spyOn(axios, 'get');
-    mock.mockImplementation(() =>
-        Promise.resolve({data: {tuits: MOCKED_TUITS} }));
+    const mock2 = jest.spyOn(axios, 'get');
+    mock2.mockImplementation(() => {
+        return Promise.resolve({data: {tuits: MOCKED_TUITS}});
+    });
 
     const response = await findAllTuits();
-    const retrievedTuits = response.tuits;
+    const retrievedTuits = response;
     render(
         <HashRouter>
             <Tuits tuits={retrievedTuits}/>
         </HashRouter>
     );
-    const tuit = screen.getByText(/bob's tuit/i);
+    const tuit = screen.getByText(/bob's 1st tuit/i);
     expect(tuit).toBeInTheDocument();
+    mock2.mockRestore();
 });

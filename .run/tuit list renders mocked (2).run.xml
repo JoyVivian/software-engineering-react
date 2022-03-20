@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tuit list renders mocked (2)" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+    <node-interpreter value="project" />
+    <node-options value="" />
+    <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+    <working-dir value="$PROJECT_DIR$" />
+    <jest-options value="--env=jsdom --testURL='https://wz-cs5500-node-a3.herokuapp.com/'" />
+    <envs />
+    <scope-kind value="TEST" />
+    <test-file value="$PROJECT_DIR$/src/tests/tuit-mock.test.js" />
+    <test-names>
+      <test-name value="tuit list renders mocked" />
+    </test-names>
+    <method v="2" />
+  </configuration>
+</component>
