@@ -7,40 +7,47 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
       <div className="row mt-2">
         <div className="col">
           <i className="far fa-message me-1"></i>
-          {tuit.stats && tuit.stats.replies}
+            {tuit.stats &&
+            <span className="ttr-stats-replies">{tuit.stats.replies}</span>
+            }
         </div>
         <div className="col">
           <i className="far fa-retweet me-1"></i>
-          {tuit.stats && tuit.stats.retuits}
+            {tuit.stats &&
+            <span className="ttr-stats-retuits">{tuit.stats.retuits}</span>
+            }
         </div>
-        <div className="col" >
-          <div style={{marginRight: 10}}>
-          <SvgThumbsUpSolid style={{marginRight: 5}} fillColor="#808080" onClick={() => likeTuit(tuit)
-               }/>
-          <span>
+          <div className="col">
+          <span className="ttr-like-tuit-click"
+                onClick={() => likeTuit(tuit)}>
               {
-                tuit.stats  && tuit.stats.likes > 0 
+                  tuit.stats  && tuit.stats.likes > 0 &&
+                  <i className="fa-solid fa-thumbs-up me-1" style={{color: 'blue'}}></i>
               }
               {
-                tuit.stats  && tuit.stats.likes <= 0
+                  tuit.stats && tuit.stats.likes <= 0 &&
+                  <i className="fa-solid fa-thumbs-up me-1"></i>
               }
-            {tuit.stats && tuit.stats.likes}
+              <span className="ttr-stats-likes">{tuit.stats && tuit.stats.likes}</span>
           </span>
           </div>
-          <div>
-          <SvgThumbsDownSolid style={{marginRight: 10}} fillColor="#808080" onClick={() => dislikeTuit(tuit)}/>
-            <span >
-                  {
-                      tuit.stats  && tuit.stats.dislikes > 0
-                  }
-                {
-                    tuit.stats  && tuit.stats.dislikes <= 0
-                }
-                {tuit.stats && tuit.stats.dislikes}
-            </span>
+
+          <div className="col">
+          <span className="ttr-dislike-tuit-click"
+                onClick={() => dislikeTuit(tuit)}>
+              {
+                  tuit.stats && tuit.stats.dislikes > 0 &&
+                  //                  findAllTuitsDislikedByUser("me").includes(tuit._id) &&
+                  <i className="fa-solid fa-thumbs-down me-1" style={{color: 'blue'}}></i>
+              }
+              {
+                  tuit.stats && tuit.stats.dislikes <= 0 &&
+                  <i className="fa-solid fa-thumbs-down"></i>
+              }
+              {tuit.stats && tuit.stats.dislikes}
+          </span>
           </div>
-          
-        </div>
+
         <div className="col">
           <i className="far fa-inbox-out"></i>
         </div>
